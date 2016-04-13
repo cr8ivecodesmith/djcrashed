@@ -1,0 +1,8 @@
+*.py[cod]
+__pycache__
+*.tmp
+*.swp
+*.log
+*.sqlite3
+*.db
+keys.json
