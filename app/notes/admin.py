@@ -49,7 +49,9 @@ class LabelAdmin(admin.ModelAdmin):
 
 class NoteAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'title',
+        'note',
         'notebook',
     )
     filter_horizontal = (
@@ -59,6 +61,8 @@ class NoteAdmin(admin.ModelAdmin):
         'created_time',
         'modified_time',
         'active',
+        'notebook',
+        'labels',
     )
     search_fields = (
         'title',
