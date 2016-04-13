@@ -1,4 +1,4 @@
 Django Crash Course
 ===================
 
-Crash course note app
+A Django crash course with good intentions
