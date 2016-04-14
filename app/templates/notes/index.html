@@ -1,10 +1,32 @@
 {% extends 'base.html' %}
-{% block title %}Notes | Home{% endblock title %}
+{% block title %}Notes{% endblock title %}
 
 {% block content %}
-<div class="col-md-12">
-    <div class="jumbotron">
-        <p>Some notes are supposed to display here</p>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="inline-form" action="{% url 'notes:index' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="form-control clear-focus-highlight" id="txtNewNote"
+                        name="txtNewNote" placeholder="Take a note...">
+                    <input class="btn btn-raised btn-primary btn-sm" type="submit" value="create">
+                </form>
+            </div>
+        </div>
     </div>
+</div>
+
+<div class="row">
+    {% for note in note_list %}
+    <div class="col-md-3">
+        <a class="note-panel-link" href="{% url 'notes:update' note.id %}">
+        <div class="panel panel-default">
+            <div class="panel-heading"><b>{{ note.title }}</b></div>
+            <div class="panel-body">{{ note.note }}</div>
+        </div>
+        </a>
+    </div>
+    {% endfor %}
 </div>
 {% endblock content %}

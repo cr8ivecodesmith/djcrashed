@@ -2,3 +2,12 @@ body {
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+.clear-focus-highlight:focus {
+    webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+a.note-panel-link {
+    text-decoration: none;
+}
