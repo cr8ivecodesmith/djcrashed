@@ -22,7 +22,7 @@ class Note(Base):
     title = models.CharField(max_length=512, blank=True)
     note = models.TextField(blank=True)
     notebook = models.ForeignKey(NoteBook, blank=True, null=True)
-    labels = models.ManyToManyField(Label)
+    labels = models.ManyToManyField(Label, blank=True)
 
     def __str__(self):
         return self.title
