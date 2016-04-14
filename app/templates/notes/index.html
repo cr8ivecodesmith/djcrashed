@@ -16,14 +16,20 @@
         </div>
     </div>
 </div>
-
 <div class="row">
     {% for note in note_list %}
     <div class="col-md-3">
         <a class="note-panel-link" href="{% url 'notes:update' note.id %}">
         <div class="panel panel-default">
+            {% if note.title %}
             <div class="panel-heading"><b>{{ note.title }}</b></div>
+            {% endif %}
+            {% if note.note %}
             <div class="panel-body">{{ note.note }}</div>
+            {% endif %}
+            {% if not note.title and not note.note %}
+            <div class="panel-body"></div>
+            {% endif %}
         </div>
         </a>
     </div>
