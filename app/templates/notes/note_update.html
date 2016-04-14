@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}Notes {% if note.title %}| {{ note.title }}{% endif %}{% endblock title %}
 
+{% block header %}
+{% include 'notes/note_search.html' %}
+{% endblock header %}
+
 {% block content %}
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -13,7 +17,7 @@
                 </div>
                 <div class="panel-body">
                     <textarea class="form-control clear-focus-highlight"
-                        name="txtNoteNote"
+                        name="txtNoteNote" rows="10em"
                         placeholder="Enter note...">{{ note.note }}</textarea>
                 </div>
                 <div class="panel-footer">

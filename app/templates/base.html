@@ -35,16 +35,14 @@
 {% endblock head_styles %}
 </head>
 <body>
-<div class="container">
 {% block header %}
 {% endblock header %}
-
+<div class="container">
 {% block content %}
 {% endblock content %}
-
+</div>
 {% block footer %}
 {% endblock footer %}
-</div>
 
 {% block scripts %}
 <!-- Bootstrap -->
@@ -57,6 +55,9 @@
 <script src="{% static 'vendor/bootstrap/themes/material/0.5.9/js/material.min.js' %}">
 </script>
 <script src="{% static 'vendor/bootstrap/themes/material/0.5.9/js/ripples.min.js' %}">
+</script>
+<script>
+    $.material.init();
 </script>
 {% endblock scripts %}
 </body>

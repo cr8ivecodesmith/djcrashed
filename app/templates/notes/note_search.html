@@ -1,0 +1,32 @@
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="javascript:void(0)">
+                Notes<div class="ripple-container"></div>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <form class="navbar-form navbar-right" action="{% url 'notes:index' %}" method="get">
+                <div class="form-group is-empty">
+                    <div class="input-group">
+                        <input type="text" class="form-control col-sm-8"
+                            value="{{ request.GET.q }}"
+                            name="q" placeholder="Search notes...">
+                        <span class="material-input"></span>
+                        <span class="input-group-btn">
+                            <button onclick="submit();" class="btn btn-default btn-xs">
+                                <i class="material-icons">search</i>
+                                <div class="ripple-container"></div>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

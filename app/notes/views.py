@@ -1,5 +1,6 @@
 import pdb
 
+from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.views.generic import View
@@ -15,7 +16,12 @@ class Index(View):
 
     def get_context_data(self, **kwargs):
         context = {}
-        notes = Note.objects.all()
+        q = self.request.GET.get('q')
+        notes = Note.objects
+        if q:
+            notes = notes.filter(Q(title__icontains=q)|Q(note__icontains=q))
+        else:
+            notes = notes.all()
 
         context['note_list'] = notes
 
@@ -41,7 +47,6 @@ class NoteUpdate(View):
 
     def get_context_data(self, **kwargs):
         context = {}
-
         try:
             note_id = kwargs.get('pk')
             note = Note.objects.get(id=note_id)
