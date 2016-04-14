@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1>Whoops! We can't find the note anywhere.</h1>
+            </div>
+            <div class="panel-body">
+                <p><a class="btn btn-raised btn-primary btn-lg"
+                    href="{% url 'notes:index' %}"
+                >Back to Notes</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
