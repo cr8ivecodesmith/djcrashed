@@ -1,7 +1,7 @@
-Django Crash Course
-===================
+djCrashed
+=========
 
-A Django crash course with good intentions
+A Django Walkthrough with good intentions
 
 
 ## Screenshots
