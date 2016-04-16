@@ -16,12 +16,7 @@ class Index(View):
 
     def get_context_data(self, **kwargs):
         context = {}
-        q = self.request.GET.get('q')
-        notes = Note.objects
-        if q:
-            notes = notes.filter(Q(title__icontains=q)|Q(note__icontains=q))
-        else:
-            notes = notes.all()
+        notes = Note.objects.all()
 
         context['note_list'] = notes
 
@@ -40,43 +35,3 @@ class Index(View):
             Note.objects.create(note=new_note)
 
         return render(request, self.template_name, context)
-
-
-class NoteUpdate(View):
-    template_name = 'notes/note_update.html'
-
-    def get_context_data(self, **kwargs):
-        context = {}
-        try:
-            note_id = kwargs.get('pk')
-            note = Note.objects.get(id=note_id)
-            context['note'] = note
-        except Note.DoesNotExist:
-            raise Http404
-
-        context.update(**kwargs)
-        return context
-
-    def get(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        return render(request, self.template_name, context)
-
-    def post(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        note = context.get('note')
-        note_title = request.POST.get('txtNoteTitle', '').strip()
-        note_note = request.POST.get('txtNoteNote', '').strip()
-        note.title = note_title
-        note.note = note_note
-        note.save()
-        return render(request, self.template_name, context)
-
-
-class NoteDelete(NoteUpdate):
-    template_name = 'notes/note_delete.html'
-
-    def post(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        note = context.get('note')
-        note.delete()
-        return redirect('notes:index')
