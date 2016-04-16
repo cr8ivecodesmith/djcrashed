@@ -2,7 +2,7 @@ import pdb
 
 from django.db.models import Q
 from django.http import Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.generic import View
 
 from .models import Note
@@ -70,13 +70,3 @@ class NoteUpdate(View):
         note.note = note_note
         note.save()
         return render(request, self.template_name, context)
-
-
-class NoteDelete(NoteUpdate):
-    template_name = 'notes/note_delete.html'
-
-    def post(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-        note = context.get('note')
-        note.delete()
-        return redirect('notes:index')
