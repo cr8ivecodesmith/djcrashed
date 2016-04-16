@@ -3,20 +3,6 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <form class="inline-form" action="{% url 'notes:index' %}" method="post">
-                    {% csrf_token %}
-                    <input type="text" class="form-control clear-focus-highlight" id="txtNewNote"
-                        name="txtNewNote" placeholder="Take a note...">
-                    <input class="btn btn-raised btn-primary btn-sm" type="submit" value="create">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
     {% for note in note_list %}
     <div class="col-md-3">
         <a class="note-panel-link" href="#">
