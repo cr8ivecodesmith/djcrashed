@@ -23,7 +23,7 @@
 <div class="row">
     {% for note in note_list %}
     <div class="col-md-3">
-        <a class="note-panel-link" href="{% url 'notes:update' note.id %}">
+        <a class="note-panel-link" href="#">
             <div class="panel panel-default">
                 {% if note.title %}
                 <div class="panel-heading"><b>{{ note.title }}</b></div>
