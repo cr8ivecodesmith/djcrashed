@@ -85,7 +85,6 @@ INSTALLED_APPS = [
 
     # Local apps
     'home',
-    'notes',
 ]
 
 MIDDLEWARE_CLASSES = [
